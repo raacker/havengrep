@@ -5,10 +5,7 @@ use std::process;
 use havengrep::Input;
 
 fn main() {
-    // Force type of the vector to avoid wrong inference
-    let args: Vec<String> = env::args().collect();
-
-    let input = Input::build(&args).unwrap_or_else(|err| {
+    let input = Input::build(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem parsing arguments: {}", err.red());
         process::exit(1);
     });
